@@ -30,7 +30,7 @@ CE-PE eBGP between client2 and leaf1 only
 
 # Without Ethernet segments
 
-The configurations that are part of this repository have the Ethernet segment already created but that wasn't the case then from leaf3 there would be one single path to 40.40.40.0/24
+The configurations that are part of this repository have the Ethernet segment already created but if that wasn't the case then from leaf3 there would be one single path to 40.40.40.0/24
 
 ```bash
 A:leaf3# show route-table
@@ -225,7 +225,7 @@ client2:
       group: server
 ```
 
-The 1st bing is the startup configuration and the 2nd one is the daemons setup which defines what protocols will be active, in this case:
+The 1st bind is the startup configuration and the 2nd one is the daemons setup which defines what protocols will be active, in this case:
 
 ```bash
 bgpd=yes
