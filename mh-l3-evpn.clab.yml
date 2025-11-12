@@ -2,11 +2,11 @@
 # Licensed under the BSD 3-Clause License.
 # SPDX-License-Identifier: BSD-3-Clause
 
-name: mh-l2-evpn
+name: mh-l3-evpn
 prefix: ""
 
 mgmt:
-  network: mh-l2-evpn
+  network: mh-l3-evpn
   ipv4-subnet: 172.80.80.0/24
 
 topology:
