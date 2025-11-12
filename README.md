@@ -211,7 +211,7 @@ docker exec -it client1 bash
 
 ## Linux FRR specifics
 
-To have BGP client 2 is a Linux FRR box, in the clab.yml
+To have BGP client 2 is a Linux FRR box, in the clab.yml:
 ```bash
 client2:
       kind: linux
@@ -224,6 +224,8 @@ client2:
         - ip link set eth0 down
       group: server
 ```
+
+Ethernet0 is disabled since we are not using the mgmt IP
 
 The 1st bind is the startup configuration and the 2nd one is the daemons setup which defines what protocols will be active, in this case:
 
