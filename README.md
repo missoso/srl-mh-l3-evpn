@@ -22,7 +22,7 @@ DF - Designated forwarder, in an all active is the device that forwards BUM traf
 
 # Client baseline setup
 
-![pic2](https://github.com/missoso/srl-mh-evpn/blob/main/img_and_drawio/srl-mh-l3-evpn-detail.png)
+![pic2](https://github.com/missoso/srl-mh-l3-evpn/blob/main/img_and_drawio/srl-mh-l3-evpn-detail.png)
 
 Symmetric routing on the ip-vrf-12
 
