@@ -217,25 +217,13 @@ client2:
 
 Ethernet0 is disabled since we are not using the mgmt IP
 
-The 1st bind is the startup configuration and the 2nd one is the daemons setup which defines what protocols will be active, in this case:
+The 1st bind is the startup configuration and the 2nd one is the daemons setup which defines what protocols will be active, the following config is from the file frr-daemons.conf:
 
 ```bash
 bgpd=yes
 ospfd=no
 ospf6d=no
-ripd=no
-ripngd=no
-isisd=no
-pimd=no
-ldpd=yes
-nhrpd=yes
-eigrpd=no
-babeld=no
-sharpd=no
-pbrd=no
-bfdd=yes
-fabricd=no
-vrrpd=no
+[...]
 ```
 
 To change the configuration use the vtysh command, example:
