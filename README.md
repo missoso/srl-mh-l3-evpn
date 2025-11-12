@@ -4,17 +4,7 @@ Baseline setup to play with EVPN multi homing (client 2)
 
 Layer 3 multi homing where one ESI is associated with a IP-VRF
 
-Client 2 CE device (linux with FRR) will establish an BGP peering with leaf1 only and share the route 40.40.40.0/24
-
-By default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), but an Ethernet segment makes it possible to have aliasing to that IP thus allowing for load balancing
-
-Some terminology:
-
-ES - Ethernet Segment
-
-ESI - Ethernet Segment Identifier (zero means single homed CE)
-
-DF - Designated forwarder, in an all active is the device that forwards BUM traffic from the network into the host
+Client 2 CE device (linux with FRR) will establish an BGP peering with leaf1 only and share the route 40.40.40.0/24, the ratioanle is that by default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), but an Ethernet segment created at leaf1 and leaf2 (to which CE2 is multi homed) makes it possible to have aliasing to that IP thus allowing for load balancing form leaf3 towards both leaf1 and leaf2 to reach that 40.40.40.0/24 subnet
 
 # Overlay, underlay and mgmt 
 
