@@ -21,9 +21,9 @@ CE-PE eBGP between leaf1 and ce2 only, multi-hop between 1.1.1.1 (lo0.1 on leaf1
 
 # Without the Ethernet segment (ES)
 
-Note: The configurations that are part of this repository contain the ES configuration, so when dpeloying it will already be there, to replicate the following output (without the ES) just remove it from leaf1 and leaf2 configuratios (it is under system network-instance protocols)
+Note: The configurations that are part of this repository contain the ES configuration, so when deploying it will already be there, to replicate the following output (without the ES) just remove it from leaf1 and leaf2 configuratios (it is under system network-instance protocols)
 
-Without the ES from leaf3 there would be one single path to 40.40.40.0/24:
+Without the ES there would be one single path to 40.40.40.0/24 from leaf3:
 
 ```bash
 A:leaf3# show route-table
