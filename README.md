@@ -132,11 +132,26 @@ IPv4 prefixes with active ECMP routes: 2
 
 # Routes announced by leaf1
 
-Two RT1
-1 - Ethernet AD per EVI (tag 0)
-2 - Ethernet AD per ES (tag maximum value)
+Some terminology
 
-One RT4
+ES - Ethernet Segment
+
+ESI - Ethernet Segment Identifier (zero means single homed CE)
+
+AD - Auto discovery
+
+EVI - EVPN Instance
+
+
+Two routes type 1:
+
+1 - Ethernet AD per EVI (tag 0), reachability for the ES allowing aliasing for the destination IP
+
+2 - Ethernet AD per ES (tag maximum value), multi-homing mode, used for fast convergence (mass withdrawal)
+
+
+One route type 4:
+
 1 - Route representing the Ethernet segment ES2
 
 (10.0.2.1 is one of the two RR's)
