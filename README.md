@@ -366,7 +366,7 @@ Received paths     : 1
 
 ## Deploying the lab
 
-The lab is deployed with the [containerlab](https://containerlab.dev) project, where [`mh-l3-evpn.clab.yml`](https://github.com/missoso/srl-symmetric-routing-irb/blob/main/mh-l3-evpn.clab.yml) file declaratively describes the lab topology.
+The lab is deployed with the [containerlab](https://containerlab.dev) project, where [`mh-l3-evpn.clab.yml`](https://github.com/missoso/srl-mh-l3-evpn/blob/main/mh-l3-evpn.clab.yml) file declaratively describes the lab topology.
 
 ```bash
 # change into the cloned directory
