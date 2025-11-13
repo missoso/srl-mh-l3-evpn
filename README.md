@@ -4,23 +4,26 @@ Baseline setup to play with EVPN multi homing (client 2)
 
 Layer 3 multi homing where one ESI is associated with a IP-VRF
 
-Client 2 CE device (linux with FRR) will establish an BGP peering with leaf1 only and share the route 40.40.40.0/24, the ratioanle is that by default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), but an Ethernet segment created at leaf1 and leaf2 (to which CE2 is multi homed) makes it possible to have aliasing to that IP thus allowing for load balancing form leaf3 towards both leaf1 and leaf2 to reach that 40.40.40.0/24 subnet
-
-# Overlay, underlay and mgmt 
-
-![pic1](https://github.com/missoso/srl-mh-evpn/blob/main/img_and_drawio/underlay_overlay_mgmt.drawio.png)
+Client 2 CE device (Linux with FRR) will establish a BGP peering only with leaf1 and share the route 40.40.40.0/24, the ratioanle is that by default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), however, with an Ethernet segment created at leaf1 and leaf2 (to which CE2 is multi homed) it is possible to have aliasing, allowing for load balancing form leaf3 towards both leaf1 and leaf2 to reach that 40.40.40.0/24 subnet
 
 # Client baseline setup
 
-![pic2](https://github.com/missoso/srl-mh-l3-evpn/blob/main/img_and_drawio/srl-mh-l3-evpn-detail.png)
+![pic1](https://github.com/missoso/srl-mh-l3-evpn/blob/main/img_and_drawio/srl-mh-l3-evpn-detail.png)
 
 Symmetric routing on the ip-vrf-12
 
 CE-PE eBGP between client2 and leaf1 only
 
-# Without Ethernet segments
+# Overlay, underlay and mgmt (just for reference)
 
-The configurations that are part of this repository have the Ethernet segment already created but if that wasn't the case then from leaf3 there would be one single path to 40.40.40.0/24
+![pic2](https://github.com/missoso/srl-mh-evpn/blob/main/img_and_drawio/underlay_overlay_mgmt.drawio.png)
+
+
+# Without the Ethernet segment (ES)
+
+Note: The configurations that are part of this repository contain the ES configuration, so when dpeloying it will already be there, to replicate the following output (without the ES) just remove it from leaf1 and leaf2 configuratios (it is under system network-instance protocols)
+
+Without the ES from leaf3 there would be one single path to 40.40.40.0/24:
 
 ```bash
 A:leaf3# show route-table
@@ -58,9 +61,9 @@ IPv4 prefixes with active ECMP routes: 1
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
 
-# Ethernet segments
+# Ethernet segments (ES)
 
-With the following Ethernet segment created on both leaf1 and leaf2 (already part of the base configs)
+With the following ES created on both leaf1 and leaf2 (already part of the base configs)
 
 ```bash
 system {
@@ -134,7 +137,7 @@ IPv4 prefixes with active ECMP routes: 2
 
 ES - Ethernet Segment
 
-ESI - Ethernet Segment Identifier (zero means single homed CE)
+ESI - ES Identifier (zero means single homed CE)
 
 AD - Auto discovery
 
@@ -149,9 +152,9 @@ Type 1 routes:
 2 - Ethernet AD per ES (tag maximum value), multi-homing mode, used for fast convergence (mass withdrawal)
 
 
-Type 4 routes (only imported by PE's that have the segment configured):
+Type 4 routes (only announced/imported by PE's that have the ES configured):
 
-1 - Route representing the Ethernet segment ES2
+1 - Route representing the ES: ES2
 
 Type 5 routes:
 
@@ -217,9 +220,9 @@ Type 1 routes:
 2 - Ethernet AD per ES (tag maximum value), multi-homing mode, used for fast convergence (mass withdrawal)
 
 
-Type 4 routes (only imported by PE's that have the segment configured):
+Type 4 routes (only announced/imported by PE's that have the ES configured):
 
-1 - Route representing the Ethernet segment ES2
+1 - Route representing the ES: ES2
 
 Type 5 routes:
 
