@@ -19,8 +19,6 @@ topology:
       type: ixr-d2l
     linux:
       image: ghcr.io/srl-labs/network-multitool
-    ce:
-      image: quay.io/frrouting/frr:9.0.2
 
   nodes:
     ### SPINES ###
