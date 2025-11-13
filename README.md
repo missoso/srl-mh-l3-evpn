@@ -12,7 +12,7 @@ Client 2 CE device (Linux with FRR) will establish a BGP peering only with leaf1
 
 Symmetric routing on the ip-vrf-12
 
-CE-PE eBGP between client2 and leaf1 only
+CE-PE eBGP between leaf1 and ce2 only, multi-hop between 1.1.1.1 (lo0.1 on leaf1) and 2.2.2.2 (lo on CE) eBGP session
 
 # Overlay, underlay and mgmt (just for reference)
 
