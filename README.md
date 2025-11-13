@@ -1,10 +1,10 @@
-# SR Linux EVPN Multi Homing - Layer 3
+<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/25c7b0cd-165e-48f7-bf52-f1b6d4684c21" /># SR Linux EVPN Multi Homing - Layer 3
 
 Baseline setup to play with EVPN multi homing (client 2)
 
 Layer 3 multi homing where one ESI is associated with a IP-VRF
 
-Client 2 CE device (Linux with FRR) will establish a BGP peering only with leaf1 and share the route 40.40.40.0/24, the ratioanle is that by default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), however, with an Ethernet segment created at leaf1 and leaf2 (to which CE2 is multi homed) it is possible to have aliasing, allowing for load balancing form leaf3 towards both leaf1 and leaf2 to reach that 40.40.40.0/24 subnet
+Client 2 CE device (Linux with FRR) will establish a BGP peering only with leaf1 and share the route 40.40.40.0/24, the rationale is that by default leaf3 will only have one path to 40.40.40.0/24 (via leaf1), however, with an Ethernet segment created at leaf1 and leaf2 (to which CE2 is multi homed) it is possible to have aliasing, allowing for load balancing form leaf3 towards both leaf1 and leaf2 to reach that 40.40.40.0/24 subnet
 
 # Client baseline setup
 
@@ -21,7 +21,7 @@ CE-PE eBGP between leaf1 and ce2 only, multi-hop between 1.1.1.1 (lo0.1 on leaf1
 
 # Without the Ethernet segment (ES)
 
-Note: The configurations that are part of this repository contain the ES configuration, so when deploying it will already be there, to replicate the following output (without the ES) just remove it from leaf1 and leaf2 configuratios (it is under system network-instance protocols)
+Note: The configurations that are part of this repository contain the ES configuration, so when deploying it will already be there, to replicate the following output (without the ES) just remove it from leaf1 and leaf2 configurations (it is under system network-instance protocols)
 
 Without the ES there would be one single path to 40.40.40.0/24 from leaf3:
 
