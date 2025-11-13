@@ -142,20 +142,26 @@ EVI - EVPN Instance
 
 # Routes announced by leaf1 
 
-Two routes type 1:
+Type 1 routes:
 
 1 - Ethernet AD per EVI (tag 0), reachability for the ES allowing aliasing for the destination IP
 
 2 - Ethernet AD per ES (tag maximum value), multi-homing mode, used for fast convergence (mass withdrawal)
 
 
-One route type 4:
+Type 4 routes:
 
 1 - Route representing the Ethernet segment ES2
 
-(10.0.2.1 is one of the two RR's)
+Type 5 routes:
+
+1 - Route for 2.2.2.2
+2 - Other prefixes like the locally connected subnet on the interface facing the CE
 
 ```bash
+
+# (10.0.2.1 is one of the two RR's)
+
 A:leaf1# show network-instance default protocols bgp neighbor 10.0.2.1 advertised-routes evpn
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Peer        : 10.0.2.1, remote AS: 100, local AS: 100
@@ -202,9 +208,28 @@ Type 5 IP Prefix Routes
 
 # Routes announced by leaf2
 
-Same as for leaf1, two RT1 and one RT4
+Like leaf1 ....
+
+Type 1 routes:
+
+1 - Ethernet AD per EVI (tag 0), reachability for the ES allowing aliasing for the destination IP
+
+2 - Ethernet AD per ES (tag maximum value), multi-homing mode, used for fast convergence (mass withdrawal)
+
+
+Type 4 routes:
+
+1 - Route representing the Ethernet segment ES2
+
+Type 5 routes:
+
+1 - Route for 2.2.2.2
+2 - Locally connected subnet on the interface facing the CE
 
 ```bash
+
+# (10.0.2.1 is one of the two RR's)
+
 A:leaf2# show network-instance default protocols bgp neighbor 10.0.2.1 advertised-routes evpn
  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -245,8 +270,6 @@ Type 5 IP Prefix Routes
 1 advertised Ethernet Segment routes
 2 advertised IP Prefix routes
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 ```
 
 ## Deploying the lab
